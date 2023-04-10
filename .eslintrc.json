@@ -1,0 +1,15 @@
+{
+  "extends": "./node_modules/gts/",
+  "rules": {
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 130
+      }
+    ]
+  }
+}

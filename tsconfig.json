@@ -1,0 +1,24 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "target": "ES2020",
+    "esModuleInterop": true,
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "coverage",
+    "node_modules",
+    "dist",
+    "tests",
+    "build"
+  ]
+}
