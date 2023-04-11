@@ -1,6 +1,7 @@
 import { GetObjectCommand } from '@aws-sdk/client-s3';
 import { s3Client } from '../clients/s3client.client';
 import streamToString from './streamToString';
+import { logger } from '../middlewares/logger/logger.mdw';
 
 const getFile = async (bucket: string, filename: string) => {
     try {
@@ -15,7 +16,7 @@ const getFile = async (bucket: string, filename: string) => {
 
         return { body, lastModified };
     } catch (error) {
-        console.error(error);
+        logger.error(error);
         return { body: '', lastModified: null };
     }
 };

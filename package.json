@@ -1,10 +1,16 @@
 {
-    "name": "{{PROJECT_NAME}}",
+    "name": "orama-test",
     "version": "1.0.0",
     "description": "",
     "main": "build/index.js",
+    "type": "module",
     "engines": {
-        "node": ">=14.0.0"
+        "node": ">= 16.13 <17"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "data.json"
+        ]
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -44,6 +50,8 @@
         "@aws-sdk/lib-dynamodb": "^3.131.0",
         "@aws-sdk/util-dynamodb": "^3.131.0",
         "@aws/dynamodb-data-marshaller": "^0.7.3",
+        "@orama/orama": "^1.0.0-beta.8",
+        "@orama/plugin-data-persistence": "^1.0.0-beta.8",
         "axios": "^0.27.2",
         "axios-retry": "^3.3.1",
         "chalk": "^4.1.2",
