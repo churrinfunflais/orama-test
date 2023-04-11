@@ -1,4 +1,4 @@
-import { Orama, search } from '@orama/orama';
+import { search } from '@orama/orama';
 import { Request, Response, NextFunction } from 'express';
 import { DB } from '../../index.js';
 
@@ -6,7 +6,7 @@ const searchProducts = async (req: Request, res: Response, next: NextFunction) =
     try {
         const searchTerm = (req?.query?.search || '') as string;
         const limit = parseInt((req?.query?.limit || '50') as string, 10);
-        const query = await search(DB as unknown as Orama, {
+        const query = await search(DB, {
             term: searchTerm,
             properties: '*',
             limit,

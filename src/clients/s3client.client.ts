@@ -1,13 +1,13 @@
 import { S3Client } from '@aws-sdk/client-s3';
-import { env } from 'process';
+import { AWS__ACCESS_KEY_ID, AWS__ACCESS_KEY, AWS__REGION, LOCAL_MODE } from '../config';
 
 // Create an Amazon S3 service client object.
 const s3Client = new S3Client({
-    region: env.AWS__REGION || 'us-east-1',
-    ...(env.LOCAL_MODE === 'true' && {
+    region: AWS__REGION || 'us-east-1',
+    ...(LOCAL_MODE === 'true' && {
         credentials: {
-            accessKeyId: env.AWS__ACCESS_KEY_ID || '',
-            secretAccessKey: env.AWS__ACCESS_KEY || '',
+            accessKeyId: AWS__ACCESS_KEY_ID || '',
+            secretAccessKey: AWS__ACCESS_KEY || '',
         },
     }),
 });

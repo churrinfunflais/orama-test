@@ -3,7 +3,6 @@ import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import { restoreFromFile } from '@orama/plugin-data-persistence';
 
 // ------------------- [Routers] ----------------------- //
 import productsRouter from './routes/products.route.js';
@@ -12,12 +11,18 @@ import errorHandler from './middlewares/error/error.mdw.js';
 
 // ------------------- [Config] ------------------------ //
 import { PORT } from './config.js';
+import { create } from '@orama/orama';
+import ProductSchema from './schemas/Product.schema.js';
+import restore from './handlers/restore.handler.js';
 
 // ------------------- [App] --------------------------- //
 export const app = express();
 
 // ------------------- [Orama] ------------------------- //
-export const DB = await restoreFromFile('json', './data.json');
+export const DB = await create({
+    schema: ProductSchema,
+});
+await restore(DB);
 
 app.use(helmet());
 app.use(cors({ origin: true }));
