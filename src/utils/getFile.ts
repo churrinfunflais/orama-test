@@ -1,7 +1,7 @@
 import { GetObjectCommand } from '@aws-sdk/client-s3';
-import { s3Client } from '../clients/s3client.client';
-import streamToString from './streamToString';
-import { logger } from '../middlewares/logger/logger.mdw';
+import { s3Client } from '../clients/s3client.client.js';
+import streamToString from './streamToString.js';
+import { logger } from '../middlewares/logger/logger.mdw.js';
 
 const getFile = async (bucket: string, filename: string) => {
     try {

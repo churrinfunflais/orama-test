@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 // ------------------- [Types] ------------------------- //
-import { ResponseError } from '../../types/ResponseError';
+import { ResponseError } from '../../types/ResponseError.js';
 import { logger } from '../logger/logger.mdw.js';
 
 // ------------------- [Error handler] ----------------- //
