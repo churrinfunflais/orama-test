@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { DB } from '../../index.js';
-import { insert } from '@orama/orama';
+import { insertMultiple } from '@orama/orama';
 import persist from '../../handlers/persist.handler.js';
 
-const insertProduct = async (req: Request, res: Response, next: NextFunction) => {
+const insertProducts = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const result = await insert(DB, req.body);
+        const data = req?.body || [];
+        const result = await insertMultiple(DB, data);
         await persist(DB);
 
         res.status(200).json(result);
@@ -15,4 +16,4 @@ const insertProduct = async (req: Request, res: Response, next: NextFunction) =>
     return next();
 };
 
-export default insertProduct;
+export default insertProducts;
